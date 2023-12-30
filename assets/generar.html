@@ -1,0 +1,62 @@
+<html>
+<head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box
+        }
+        
+        input {
+            margin: 1% 45%;
+            background: #1d2327;
+            color: #fff;
+            padding: 0.5em;
+            width: 10%;
+            border-radius: 0.5em;
+            border: none
+        }
+        textarea {
+            width: 100%;
+            background: #1d2327;
+            color: #fff
+        }
+        form{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <textarea cols="40" rows="6" placeholder=""><script>
+    let images = [
+        //Pones las imagenes aquí
+    ]
+</script></textarea>
+        <form name="seccion">
+            <textarea name="generarurls" cols="40" rows="10" placeholder="Generar urls"></textarea>
+            <textarea name="urlsgeneradas" cols="40" rows="10" placeholder="Url generadas"></textarea>            
+        </form>
+        <input type="button" value="Generar" onclick="generar()">
+    </section>
+    <script>
+    function generar() {
+        var key = document.seccion.generarurls.value;
+        // Tipo de protocolo - Es recomendable que sea https para que la página sea segura
+            key = key.replace(/https/gi,'"https');
+        
+        // Tipo de formatos de imagenes
+            key = key.replace(/webp/gi,'webp",');
+            key = key.replace(/jpg/gi,'jpg",');
+            key = key.replace(/jpeg/gi,'jpeg",');
+            key = key.replace(/png/gi,'png",');
+            key = key.replace(/avif/gi,'avif",');
+            key = key.replace(/bmp/gi,'bmp",');
+            key = key.replace(/tif/gi,'tif",');
+            key = key.replace(/gif/gi,'gif",');
+        document.seccion.urlsgeneradas.value = key
+    }</script>
+</body>
+</html>
